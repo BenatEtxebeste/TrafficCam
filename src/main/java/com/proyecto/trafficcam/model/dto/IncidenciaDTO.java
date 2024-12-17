@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class IncidenciaDTO {
     
-    private Long id;
     private int incidenceId;
     private int sourceId;
     private String incidenceType;
@@ -15,7 +14,9 @@ public class IncidenciaDTO {
     private String province;
     private String carRegistration;
     private String cause;
+    private String cityTown;
     private Date startDate;
+    private String incidenceLevel;
     private String road;
     private double pkStart;
     private double pkEnd;

@@ -12,5 +12,5 @@ public class IncidenciaResponse {
     private int totalItems;
     private int totalPages;
     private int currentPage;
-    private List<Incidencia> incidencias;
+    private List<Incidencia> incidences;
 }

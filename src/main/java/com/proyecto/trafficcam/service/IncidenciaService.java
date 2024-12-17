@@ -1,5 +1,8 @@
 package com.proyecto.trafficcam.service;
 
+import java.sql.Date;
+import java.sql.Time;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -21,7 +24,7 @@ public class IncidenciaService {
     private RestTemplate restTemplate;
 
     public void cargarBBDD() {
-        String url = "https://api.euskadi.eus/traffic/v1.0/cameras";
+        String url = "https://api.euskadi.eus/traffic/v1.0/incidences/byDate/2024/12/17";
 
         SSLUtils.disableSslVerification();
         IncidenciaResponse incidenciasResponse = restTemplate.getForObject(url, IncidenciaResponse.class);
@@ -29,7 +32,7 @@ public class IncidenciaService {
         for (int i = 1; i <= incidenciasResponse.getTotalPages(); i++) {
             IncidenciaResponse incidencias = restTemplate.getForObject(url + "?_page=" + i, IncidenciaResponse.class);
             
-            for (Incidencia incidencia : incidencias.getIncidencias()) {
+            for (Incidencia incidencia : incidencias.getIncidences()) {
                 incidenciaRepository.save(incidencia);
             }
         }
