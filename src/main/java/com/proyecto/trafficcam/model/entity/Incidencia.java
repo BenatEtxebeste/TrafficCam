@@ -27,6 +27,7 @@ public class Incidencia {
     private String cause;
     private String cityTown;
     private Date startDate;
+    private Date endDate;
     private String incidenceLevel;
     private String road;
     private double pkStart;

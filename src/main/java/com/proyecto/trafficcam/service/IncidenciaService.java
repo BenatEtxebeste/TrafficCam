@@ -1,7 +1,7 @@
 package com.proyecto.trafficcam.service;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -24,7 +24,11 @@ public class IncidenciaService {
     private RestTemplate restTemplate;
 
     public void cargarBBDD() {
-        String url = "https://api.euskadi.eus/traffic/v1.0/incidences/byDate/2024/12/17";
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String fechaFormateada = fechaActual.format(formatter);
+
+        String url = "https://api.euskadi.eus/traffic/v1.0/incidences/byDate/" + fechaFormateada;
 
         SSLUtils.disableSslVerification();
         IncidenciaResponse incidenciasResponse = restTemplate.getForObject(url, IncidenciaResponse.class);
