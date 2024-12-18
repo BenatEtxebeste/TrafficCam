@@ -1,5 +1,8 @@
 package com.proyecto.trafficcam.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -33,6 +36,17 @@ public class CameraService {
                 cameraRepository.save(camera);
             }
         }
+    }
+
+    public List<Camera> getCameras() {
+        List<Camera> cameras = new ArrayList<Camera>();
+        cameraRepository.findAll().forEach(camera -> cameras.add(camera));
+
+        return cameras;
+    }
+
+    public Camera getCameraById(long id) {
+        return cameraRepository.findById(id).get();
     }
 
     @EventListener(ContextRefreshedEvent.class)
