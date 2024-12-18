@@ -2,6 +2,8 @@ package com.proyecto.trafficcam.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -40,6 +42,28 @@ public class IncidenciaService {
                 incidenciaRepository.save(incidencia);
             }
         }
+    }
+
+    public List<Incidencia> getIncidences() {
+        List<Incidencia> incidences = new ArrayList<Incidencia>();
+        incidenciaRepository.findAll().forEach(incidence -> incidences.add(incidence));;
+        return incidences;
+    }
+
+    public Incidencia getIncidenceById(long id) {
+        return incidenciaRepository.findById(id).get();
+    }
+
+    public void createIncidence(Incidencia incidence) {
+        incidenciaRepository.save(incidence);
+    }
+
+    public void deleteIncidence(long id) {
+        incidenciaRepository.deleteById(id);
+    }
+
+    public void updateIncidence(Incidencia incidence){
+        incidenciaRepository.save(incidence);
     }
 
     @EventListener(ContextRefreshedEvent.class)
