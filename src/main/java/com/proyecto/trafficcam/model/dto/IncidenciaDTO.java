@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class IncidenciaDTO {
 
-    private long id;
     private int incidenceId;
     private int sourceId;
     private String incidenceType;

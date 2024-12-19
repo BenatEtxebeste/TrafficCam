@@ -68,6 +68,6 @@ public class IncidenciaService {
 
     @EventListener(ContextRefreshedEvent.class)
     public void cargarDatosAlInicio() {
-        cargarBBDD();
+        // cargarBBDD();
     }
 }

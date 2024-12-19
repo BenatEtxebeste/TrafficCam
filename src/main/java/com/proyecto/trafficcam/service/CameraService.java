@@ -51,6 +51,6 @@ public class CameraService {
 
     @EventListener(ContextRefreshedEvent.class)
     public void cargarDatosAlInicio() {
-        cargarBBDD();
+        // cargarBBDD();
     }
 }
