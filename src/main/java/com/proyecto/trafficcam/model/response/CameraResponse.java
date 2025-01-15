@@ -2,7 +2,7 @@ package com.proyecto.trafficcam.model.response;
 
 import java.util.List;
 
-import com.proyecto.trafficcam.model.entity.Camera;
+import com.proyecto.trafficcam.model.dto.CameraDTO;
 
 import lombok.Data;
 
@@ -12,5 +12,5 @@ public class CameraResponse {
     private int totalItems;
     private int totalPages;
     private int currentPage;
-    private List<Camera> cameras;
+    private List<CameraDTO> cameras;
 }

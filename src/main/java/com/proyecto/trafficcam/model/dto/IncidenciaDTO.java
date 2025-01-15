@@ -8,7 +8,7 @@ import lombok.Data;
 public class IncidenciaDTO {
 
     private int incidenceId;
-    private int sourceId;
+    private Long sourceId;
     private String incidenceType;
     private String autonomousRegion;
     private String province;

@@ -2,7 +2,7 @@ package com.proyecto.trafficcam.model.response;
 
 import java.util.List;
 
-import com.proyecto.trafficcam.model.entity.Incidencia;
+import com.proyecto.trafficcam.model.dto.IncidenciaDTO;
 
 import lombok.Data;
 
@@ -12,5 +12,5 @@ public class IncidenciaResponse {
     private int totalItems;
     private int totalPages;
     private int currentPage;
-    private List<Incidencia> incidences;
+    private List<IncidenciaDTO> incidences;
 }

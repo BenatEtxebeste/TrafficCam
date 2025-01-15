@@ -6,7 +6,7 @@ import lombok.Data;
 public class CameraDTO {
 
     private Long id;
-    private int sourceId;
+    private Long sourceId;
     private String cameraName;
     private double latitude;
     private double longitude;
