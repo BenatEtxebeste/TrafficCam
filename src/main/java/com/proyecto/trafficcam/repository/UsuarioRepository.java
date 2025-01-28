@@ -8,5 +8,5 @@ import com.proyecto.trafficcam.model.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
-    Optional<Usuario> findByNameAndPassword(String name, String passwordString);
+    Optional<Usuario> findByName(String name);
 }

@@ -1,0 +1,29 @@
+package com.proyecto.trafficcam.model.response;
+
+import java.sql.Date;
+
+import lombok.Data;
+
+@Data
+public class IncidenciaPATCH {
+    
+    private Long id;
+    private int incidenceId;
+    private Long sourceId;
+    private String incidenceType;
+    private String autonomousRegion;
+    private String province;
+    private String carRegistration;
+    private String cause;
+    private String cityTown;
+    private Date startDate;
+    private Date endDate;
+    private String incidenceLevel;
+    private String road;
+    private double pkStart;
+    private double pkEnd;
+    private String direction;
+    private double latitude;
+    private double longitude;
+
+}

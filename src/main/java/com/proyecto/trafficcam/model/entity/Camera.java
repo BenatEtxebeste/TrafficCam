@@ -1,5 +1,7 @@
 package com.proyecto.trafficcam.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -26,5 +28,6 @@ public class Camera {
     private String urlImage;
 
     @ManyToOne
+    @JsonIgnoreProperties({"cameras", "incidencias"})
     private Source source;
 }

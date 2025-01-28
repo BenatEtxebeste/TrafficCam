@@ -2,6 +2,8 @@ package com.proyecto.trafficcam.model.entity;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class Incidencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private boolean creado;
     private int incidenceId;
     private String incidenceType;
     private String autonomousRegion;
@@ -37,5 +40,10 @@ public class Incidencia {
     private double longitude;
 
     @ManyToOne
+    @JsonIgnoreProperties({"cameras", "incidencias"})
     private Source source;
+
+    // @ManyToOne
+    // @JsonIgnoreProperties({"incidencias"})
+    // private Ciudad ciudad;
 }
