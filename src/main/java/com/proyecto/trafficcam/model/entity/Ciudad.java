@@ -1,14 +1,16 @@
 package com.proyecto.trafficcam.model.entity;
 
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
-// import jakarta.persistence.FetchType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-// import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,10 +32,11 @@ public class Ciudad {
         this.nombre = nombre;
     }
 
-    // @OneToMany(mappedBy = "ciudad", fetch = FetchType.EAGER)
-    // private List<Incidencia> incidencias = new ArrayList<>();
+    @OneToMany(mappedBy = "ciudad", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"incidencias"})
+    private List<Incidencia> incidencias = new ArrayList<>();
 
-    // public void insertarIncidencia(Incidencia incidencia) {
-    //     incidencias.add(incidencia);
-    // }
+    public void insertarIncidencia(Incidencia incidencia) {
+        incidencias.add(incidencia);
+    }
 }

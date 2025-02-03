@@ -43,7 +43,7 @@ public class Incidencia {
     @JsonIgnoreProperties({"cameras", "incidencias"})
     private Source source;
 
-    // @ManyToOne
-    // @JsonIgnoreProperties({"incidencias"})
-    // private Ciudad ciudad;
+    @ManyToOne
+    @JsonIgnoreProperties({"incidencias"})
+    private Ciudad ciudad;
 }
