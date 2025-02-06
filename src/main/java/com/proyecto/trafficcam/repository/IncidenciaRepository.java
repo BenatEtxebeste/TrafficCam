@@ -1,5 +1,7 @@
 package com.proyecto.trafficcam.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +16,6 @@ public interface IncidenciaRepository extends JpaRepository<Incidencia, Long> {
     @Modifying
     @Query("DELETE FROM Incidencia i WHERE i.creado = false")
     void eliminarIncidenciasNoCreadas();
+
+    List<Incidencia> findByCityTownContaining(String cityTown);
 }

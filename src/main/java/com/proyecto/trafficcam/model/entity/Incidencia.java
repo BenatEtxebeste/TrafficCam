@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,7 @@ public class Incidencia {
     private String province;
     private String carRegistration;
     private String cause;
+    @Column(name = "city_town")
     private String cityTown;
     private Date startDate;
     private Date endDate;

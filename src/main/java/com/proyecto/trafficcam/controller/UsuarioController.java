@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +40,9 @@ public class UsuarioController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @GetMapping("/users")
     @Operation(summary = "Recoger usuarios", description = "Devuelve todos los usuarios existentes")
@@ -76,6 +81,8 @@ public class UsuarioController {
         usuario.setPassword(hashedPassword);
         usuario.setAdmin(false);
         usuarioRepository.save(usuario);
+
+        enviarCorreoNotificacion(usuario);
 
         return ResponseEntity.status(HttpStatus.OK).body("Usuario creado correctamente");
     }
@@ -118,6 +125,19 @@ public class UsuarioController {
     
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
+    private void enviarCorreoNotificacion(Usuario usuario) {
+        try {
+            SimpleMailMessage mensaje = new SimpleMailMessage();
+            mensaje.setTo("trafficcamprueba@gmail.com"); 
+            mensaje.setSubject("Nuevo usuario creado");
+            mensaje.setText("El usuario " + usuario.getName() + " ha sido creado exitosamente.");
+
+            mailSender.send(mensaje);
+        } catch (Exception e) {
+            System.err.println("Error al enviar el correo: " + e.getMessage());
         }
     }
     

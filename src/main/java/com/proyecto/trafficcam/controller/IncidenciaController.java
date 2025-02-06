@@ -25,6 +25,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Tag(name = "Incidencias")
@@ -57,6 +59,16 @@ public class IncidenciaController {
 	public Incidencia getIncidenciaById(@PathVariable("id") long id) {
 		return incidenciaRepository.findById(id).get();
 	}
+
+    @GetMapping("/incidences/city")
+    @Operation(summary = "Recoger incidencia mediante el nombre de la ciudad", description = "Devuelve la incidencia con el city town introducido")
+    @ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Incidencia encontrada", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Incidencia.class)))
+	})
+    public List<Incidencia> getIncidenciasByCityTown(@RequestParam("cityTown") String cityTown) {
+    return incidenciaRepository.findByCityTownContaining(cityTown);
+}
+    
 
     @PostMapping("/incidences")
     @Operation(summary = "Insertar incidencia", description = "Inserta una nueva incidencia en la base de datos")

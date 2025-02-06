@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.proyecto.trafficcam.SSLUtils;
 import com.proyecto.trafficcam.model.dto.CameraDTO;
+
 import com.proyecto.trafficcam.model.dto.IncidenciaDTO;
 import com.proyecto.trafficcam.model.entity.Camera;
 import com.proyecto.trafficcam.model.entity.Ciudad;
